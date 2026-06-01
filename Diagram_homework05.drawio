@@ -1,0 +1,219 @@
+<mxfile host="65bd71144e">
+    <diagram id="arch-social-media" name="Social Media Storage Architecture">
+        <mxGraphModel dx="1734" dy="1247" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="Social Media Storage System — Architecture Diagram" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#1a1a2e;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="20" width="1260" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="subtitle" value="Môn: Hệ quản trị Cơ sở Dữ liệu  |  Stack: Python · MongoDB · Redis" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="58" width="1260" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer1_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=30;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="100" width="1540" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer1_label" value="LAYER 1 — DATA SOURCES (Nguồn dữ liệu)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#1e4d78;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="106" width="400" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="twitter" value="🐦 Twitter / X&#xa;Twitter API v2&#xa;(Bearer Token)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1da1f2;strokeColor=#0d8bd9;fontColor=#ffffff;fontSize=12;fontStyle=1;arcSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="136" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="facebook" value="📘 Facebook&#xa;Graph API&#xa;(Access Token)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1877f2;strokeColor=#0d5fc2;fontColor=#ffffff;fontSize=12;fontStyle=1;arcSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="730" y="136" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="instagram" value="📸 Instagram&#xa;Basic Display API&#xa;(OAuth 2.0)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1306c;strokeColor=#c13584;fontColor=#ffffff;fontSize=12;fontStyle=1;arcSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="1270" y="136" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer2_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;opacity=30;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="290" width="1540" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer2_label" value="LAYER 2 — CRAWLER LAYER (crawlers/)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#2d6a2d;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="296" width="400" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="profile_crawler" value="👤 ProfileCrawler&#xa;profile_crawler.py&#xa;─────────────────&#xa;• crawl(limit)&#xa;• _fetch_profiles(platform, n)&#xa;• _parse_profile(raw)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#5a9e5a;fontSize=11;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="320" width="240" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="post_crawler" value="📝 PostCrawler&#xa;post_crawler.py&#xa;─────────────────&#xa;• crawl(users, posts/user)&#xa;• _fetch_posts(user, limit)&#xa;• extract_hashtag_scores()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#5a9e5a;fontSize=11;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="320" width="240" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="feed_builder" value="📡 FeedBuilder&#xa;feed_crawler.py&#xa;─────────────────&#xa;• build_feeds(users, posts)&#xa;• _update_trending(posts)&#xa;• simulate_online_users()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#5a9e5a;fontSize=11;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="320" width="240" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="config_box" value="⚙️ config.py&#xa;─────────────────&#xa;MONGO_URI&#xa;REDIS_HOST / PORT&#xa;CRAWL_DELAY / BATCH" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="340" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="mock_gen" value="🔧 mock_generator.py&#xa;─────────────────&#xa;generate_users()&#xa;generate_posts()&#xa;generate_feed_items()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="340" width="200" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer3_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=30;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="560" width="1540" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer3_label" value="LAYER 3 — DATA MODELS (models/)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#5a1e78;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="566" width="400" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="model_user" value="👤 UserProfile&#xa;user_profile.py&#xa;──────────────────────────&#xa;user_id, platform, platform_uid&#xa;username, display_name, bio&#xa;followers_count, following_count&#xa;following_ids[ ], interests[ ]&#xa;created_at, crawled_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="590" width="260" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="model_post" value="📝 Post + MediaItem&#xa;post.py&#xa;──────────────────────────&#xa;post_id, platform, author_id&#xa;content, language&#xa;hashtags[ ], mentions[ ], urls[ ]&#xa;likes_count, comments_count&#xa;media[ ] → MediaItem{ }&#xa;published_at, crawled_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="620" y="590" width="280" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="model_feed" value="📡 FeedItem + TrendingTag&#xa;feed.py&#xa;──────────────────────────&#xa;feed_item_id, user_id, post_id&#xa;source_type (following/trending)&#xa;relevance_score, recency_score&#xa;final_score = 0.6R + 0.4T&#xa;TrendingTag { tag, score }" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="1170" y="590" width="280" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer4_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=30;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="810" width="1540" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer4_label" value="LAYER 4 — STORAGE HANDLERS (storage/)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#7a4000;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="816" width="400" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="mongo_handler" value="🗄️ MongoDBHandler&#xa;mongodb_handler.py&#xa;──────────────────────────────&#xa;save_user() / save_users_bulk()&#xa;save_post() / save_posts_bulk()&#xa;get_user(user_id)&#xa;get_posts_by_author(author_id)&#xa;get_posts_by_hashtag(tag)&#xa;create_indexes()  ·  get_stats()&#xa;────────&#xa;Fallback: MockDatabase (JSON files)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6882a;fontSize=10;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="842" width="300" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis_handler" value="⚡ RedisHandler&#xa;redis_handler.py&#xa;──────────────────────────────&#xa;push_to_feed() / get_feed()&#xa;push_bulk_to_feed()&#xa;update_trending() / get_trending_tags()&#xa;init_post_likes() / increment_likes()&#xa;user_online() / user_offline()&#xa;get_online_count()&#xa;────────&#xa;Fallback: MockRedis (in-memory)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6882a;fontSize=10;align=left;spacingLeft=8;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="870" y="842" width="300" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="mock_db_box" value="📁 MockDatabase&#xa;(Fallback)&#xa;──────────────&#xa;JSON files&#xa;data/mock_data/&#xa;user_profiles.json&#xa;posts.json" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;arcSize=6;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="870" width="170" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="mock_redis_box" value="💾 MockRedis&#xa;(Fallback)&#xa;──────────────&#xa;Python dict{}&#xa;in RAM&#xa;(mất khi tắt)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;spacingLeft=8;arcSize=6;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="1220" y="870" width="170" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer5_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;opacity=30;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="1080" width="1540" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="layer5_label" value="LAYER 5 — NoSQL DATABASES" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="1086" width="400" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="mongodb_db" value="🍃 MongoDB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4db33d;strokeColor=#3a8a2d;fontColor=#ffffff;fontSize=16;fontStyle=1;arcSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="1110" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="col_users" value="📂 user_profiles&#xa;Document { }&#xa;Index: platform+username" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#5a9e5a;fontSize=10;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="1185" width="200" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="col_posts" value="📂 posts&#xa;Document { } + Array[ ]&#xa;Index: published_at, hashtags, author" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#5a9e5a;fontSize=10;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="1185" width="240" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis_db" value="⚡ Redis" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dc382c;strokeColor=#b22222;fontColor=#ffffff;fontSize=16;fontStyle=1;arcSize=8;" parent="1" vertex="1">
+                    <mxGeometry x="870" y="1110" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis_list" value="📋 LIST&#xa;feed:{user_id}&#xa;Max 200 items · TTL 24h" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6882a;fontSize=10;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="870" y="1185" width="190" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis_zset" value="📊 SORTED SET&#xa;trending_tags&#xa;Score = tần suất xuất hiện" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6882a;fontSize=10;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="1075" y="1185" width="190" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis_str" value="🔢 STRING (Counter)&#xa;post_likes:{post_id}&#xa;Atomic INCR" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6882a;fontSize=10;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="1280" y="1185" width="190" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis_set" value="👥 SET&#xa;online_users&#xa;O(1) add/remove/check" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6882a;fontSize=10;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="1485" y="1185" width="190" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="main_box" value="🚀 main.py — Pipeline Orchestrator&#xa;Bước 1: Init DB connections → Bước 2: ProfileCrawler.crawl() → Bước 3: PostCrawler.crawl() → Bước 4: FeedBuilder.build_feeds() → Bước 5: Demo queries" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a1a2e;strokeColor=#0f3460;fontColor=#e0e0e0;fontSize=11;align=left;spacingLeft=10;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="1340" width="1540" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_tw_pc" value="HTTP GET&#xa;API v2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#1da1f2;fontColor=#1da1f2;fontSize=9;" parent="1" source="twitter" target="profile_crawler" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_fb_pc" value="Graph API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#1877f2;fontColor=#1877f2;fontSize=9;" parent="1" source="facebook" target="post_crawler" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_ig_fc" value="OAuth 2.0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#e1306c;fontColor=#e1306c;fontSize=9;" parent="1" source="instagram" target="feed_builder" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_pc_mu" value="parse →&#xa;UserProfile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#9673a6;fontColor=#9673a6;fontSize=9;" parent="1" source="profile_crawler" target="model_user" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_postc_mp" value="parse →&#xa;Post" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#9673a6;fontColor=#9673a6;fontSize=9;" parent="1" source="post_crawler" target="model_post" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_fb_mf" value="build →&#xa;FeedItem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#9673a6;fontColor=#9673a6;fontSize=9;" parent="1" source="feed_builder" target="model_feed" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_mu_mh" value=".to_dict()&#xa;save_user()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#d79b00;fontColor=#7a4000;fontSize=9;" parent="1" source="model_user" target="mongo_handler" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_mp_mh" value=".to_dict()&#xa;save_post()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#d79b00;fontColor=#7a4000;fontSize=9;" parent="1" source="model_post" target="mongo_handler" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="760" y="780"/>
+                            <mxPoint x="270" y="780"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arr_mf_rh" value=".to_dict()&#xa;push_to_feed()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#d79b00;fontColor=#7a4000;fontSize=9;" parent="1" source="model_feed" target="redis_handler" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_mh_mongo" value="pymongo&#xa;insert / upsert" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4db33d;fontColor=#2d6a2d;fontSize=9;fontStyle=1;" parent="1" source="mongo_handler" target="mongodb_db" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_rh_redis" value="redis-py&#xa;LPUSH / ZADD / INCR" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#dc382c;fontColor=#8b0000;fontSize=9;fontStyle=1;" parent="1" source="redis_handler" target="redis_db" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_mh_mockdb" value="fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#b85450;fontColor=#b85450;fontSize=9;dashed=1;" parent="1" source="mongo_handler" target="mock_db_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_rh_mockredis" value="fallback" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#b85450;fontColor=#b85450;fontSize=9;dashed=1;" parent="1" source="redis_handler" target="mock_redis_box" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_mongo_col1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4db33d;" parent="1" source="mongodb_db" target="col_users" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_mongo_col2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#4db33d;" parent="1" source="mongodb_db" target="col_posts" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_redis_list" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#dc382c;" parent="1" source="redis_db" target="redis_list" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_redis_zset" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#dc382c;" parent="1" source="redis_db" target="redis_zset" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_redis_str" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#dc382c;" parent="1" source="redis_db" target="redis_str" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr_redis_set" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#dc382c;" parent="1" source="redis_db" target="redis_set" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="1410" width="820" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_title" value="📌 LEGEND" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#333333;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="1416" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg1" value="Solid arrow = luồng dữ liệu chính" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="1440" width="260" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg2" value="Dashed arrow = fallback khi không có server" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="1464" width="310" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg3" value="🟩 MongoDB = lưu trữ persistent (User Profiles, Posts)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="1440" width="380" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg4" value="🟥 Redis = lưu trữ realtime (Feed, Trending, Likes, Online)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="1464" width="420" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg5" value="🟨 Mock/Fallback = tự động khi không kết nối được DB thật" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="1490" width="420" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="dataflow_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="1410" width="700" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="dataflow_title" value="🔄 DATA FLOW SUMMARY" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#1e4d78;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="1416" width="300" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="df1" value="API → ProfileCrawler → UserProfile → MongoDBHandler → MongoDB (user_profiles)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="1438" width="660" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="df2" value="API → PostCrawler → Post → MongoDBHandler → MongoDB (posts)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="1458" width="660" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="df3" value="Posts → FeedBuilder → FeedItem → RedisHandler → Redis LIST (feed:{uid})" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="1478" width="660" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="df4" value="Post.hashtags → RedisHandler → Redis SORTED SET (trending_tags)" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="920" y="1498" width="660" height="18" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

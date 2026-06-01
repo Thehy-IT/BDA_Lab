@@ -1,0 +1,105 @@
+# ==============================================================================
+# Senior-Level .gitignore for Big Data Pipeline Project
+# ==============================================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Virtual Environment ---
+venv/
+env/
+ENV/
+.env/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Unit testing / Coverage reports ---
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+pytestdebug.log
+
+# --- Logging & Runtime Data ---
+*.log
+data/*.log
+data/pipeline.log
+logs/
+*.sql
+*.sqlite
+
+# --- Big Data / Storage Specific ---
+# Thường không commit dữ liệu thô hoặc dữ liệu trung gian lớn
+# data/mock_data/
+# data/test_mock/
+# Nếu bạn muốn giữ mock data nhỏ, hãy bỏ comment dòng dưới:
+!data/mock_data/*.json
+
+# --- Database / NoSQL Artifacts ---
+# Tránh commit các file dump hoặc lock của DB nếu chạy local
+*.dump
+*.seed
+.mongodb/
+.redis/
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# --- OS Specific ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- Tool Specific ---
+.antigravitycli/
+{crawlers,storage,models,utils,data/
+
+# --- Secrets & Config ---
+# Khuyến nghị: Sử dụng .env và ignore config.py nếu nó chứa thông tin nhạy cảm
+# .env
+# .env.local
+# .env.development.local
+# .env.test.local
+# .env.production.local
+# config.py  # Mở comment nếu bạn chuyển sang dùng config.py.example

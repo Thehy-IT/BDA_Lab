@@ -1,0 +1,26 @@
+# ============================================================
+# requirements.txt - Dependencies
+# Cài đặt: pip install -r requirements.txt
+# ============================================================
+
+# ── NoSQL Databases ────────────────────────────────────────
+pymongo==4.7.2          # MongoDB driver
+redis==5.0.4            # Redis driver
+
+# ── HTTP / Crawling ────────────────────────────────────────
+requests==2.32.3        # HTTP requests
+httpx==0.27.0           # Async HTTP client (tuỳ chọn)
+beautifulsoup4==4.12.3  # HTML parsing (crawl web)
+lxml>=5.3.0           # Parser nhanh cho BS4
+
+# ── Data Processing ────────────────────────────────────────
+python-dateutil==2.9.0  # Xử lý ngày tháng
+langdetect==1.0.9       # Phát hiện ngôn ngữ
+
+# ── Testing ────────────────────────────────────────────────
+pytest==8.2.2           # Test framework
+pytest-cov==5.0.0       # Coverage report
+
+# ── Utilities ──────────────────────────────────────────────
+python-dotenv==1.0.1    # Load .env config
+tqdm==4.66.4            # Progress bar khi crawl batch lớn
