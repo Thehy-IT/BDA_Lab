@@ -36,7 +36,7 @@ def main():
     start_time = datetime.now()
 
     print("=" * 60)
-    print("  🌐 SOCIAL MEDIA STORAGE SYSTEM")
+    print("  SOCIAL MEDIA STORAGE SYSTEM")
     print("  Đồ án môn: Hệ quản trị Cơ sở Dữ liệu")
     print("  Sinh viên: HUỲNH THẾ HY - 051205009083")
     print("=" * 60)
@@ -152,7 +152,7 @@ def _print_summary(mongo, redis, p_crawler, post_crawler,
     redis_stats = redis.get_stats()
 
     print("\n" + "═" * 60)
-    print("  📊 BÁO CÁO TỔNG KẾT PIPELINE")
+    print("  BÁO CÁO TỔNG KẾT PIPELINE")
     print("═" * 60)
     print(f"  +  Thời gian thực thi      : {elapsed:.2f} giây")
     print(f"  + Tổng users đã lưu       : {mongo_stats['total_users']}")
@@ -164,7 +164,7 @@ def _print_summary(mongo, redis, p_crawler, post_crawler,
     print(f"  + MongoDB backend         : {mongo_stats['storage_backend']}")
     print(f"  + Redis backend            : {redis_stats['storage_backend']}")
     print("═" * 60)
-    print("  ✅ Pipeline hoàn thành thành công!")
+    print("  Pipeline hoàn thành thành công!")
     print("═" * 60 + "\n")
 
 
