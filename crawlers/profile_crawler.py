@@ -55,10 +55,17 @@ class ProfileCrawler:
 
         all_profiles: List[UserProfile] = []
 
-        for plat in platforms:
+        remaining = limit
+        for i, plat in enumerate(platforms):
             logger.info("  ▶ Platform: %s", plat.upper())
-            profiles = self._crawl_platform(plat, limit // len(platforms))
+            # Chia đều limit, nếu dư thì cộng vào platform cuối
+            n = limit // len(platforms)
+            if i == len(platforms) - 1:
+                n = remaining
+            
+            profiles = self._crawl_platform(plat, n)
             all_profiles.extend(profiles)
+            remaining -= len(profiles)
 
         # ── Lưu vào MongoDB ───────────────────────────────
         saved = self.db.save_users_bulk([p.to_dict() for p in all_profiles])

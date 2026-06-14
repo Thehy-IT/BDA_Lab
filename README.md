@@ -1,4 +1,5 @@
 # Social Media Storage System
+
 > **Đồ án môn: Hệ quản trị Cơ sở Dữ liệu**
 > Thiết kế giải pháp lưu trữ NoSQL cho nền tảng mạng xã hội
 
@@ -55,18 +56,19 @@ pytest tests/ -v --cov=. --cov-report=term-missing
 
 ## Kiến trúc lưu trữ
 
-| Dữ liệu         | NoSQL DB  | Cấu trúc        | Lý do chọn                          |
-|-----------------|-----------|-----------------|--------------------------------------|
-| User Profiles   | MongoDB   | Document        | Schema linh hoạt, dễ mở rộng        |
-| Posts           | MongoDB   | Document        | Hỗ trợ array (hashtags, media)       |
-| Realtime Feed   | Redis     | List            | O(1) push/pop, TTL tự động           |
-| Trending Tags   | Redis     | Sorted Set      | Tự động xếp hạng theo score         |
-| Post Likes      | Redis     | Counter (String)| Atomic increment cực nhanh          |
-| Online Users    | Redis     | Set             | O(1) add/remove/check               |
+| Dữ liệu     | NoSQL DB | Cấu trúc       | Lý do chọn                     |
+| ------------- | -------- | ---------------- | -------------------------------- |
+| User Profiles | MongoDB  | Document         | Schema linh hoạt, dễ mở rộng |
+| Posts         | MongoDB  | Document         | Hỗ trợ array (hashtags, media) |
+| Realtime Feed | Redis    | List             | O(1) push/pop, TTL tự động    |
+| Trending Tags | Redis    | Sorted Set       | Tự động xếp hạng theo score |
+| Post Likes    | Redis    | Counter (String) | Atomic increment cực nhanh      |
+| Online Users  | Redis    | Set              | O(1) add/remove/check            |
 
 ## Fallback (không cần cài MongoDB/Redis)
 
 Hệ thống tự động fallback:
+
 - **MockDatabase**: Lưu JSON files vào `data/mock_data/`
 - **MockRedis**: Dùng dict trong RAM
 
