@@ -35,10 +35,8 @@ logger = logging.getLogger("main")
 def main():
     start_time = datetime.now()
 
-    print("=" * 60)
     print("  SOCIAL MEDIA STORAGE SYSTEM")
     print("  Đồ án môn: Hệ quản trị Cơ sở Dữ liệu")
-    print("  Sinh viên: HUỲNH THẾ HY - 051205009083")
     print("=" * 60)
 
     # ────────────────────────────────────────────────────────
