@@ -116,9 +116,9 @@ class MongoDBHandler:
             client = pymongo.MongoClient(uri, serverSelectionTimeoutMS=2000)
             client.server_info()          # raise nếu không kết nối được
             self._db = client[self.db_name]
-            logger.info("✅ Kết nối MongoDB thành công: %s", uri)
+            logger.info("Kết nối MongoDB thành công: %s", uri)
         except Exception as e:
-            logger.warning("⚠️  Không kết nối được MongoDB (%s). "
+            logger.warning("Không kết nối được MongoDB (%s). "
                            "Chuyển sang MockDatabase.", e)
             self._db       = MockDatabase(self.mock_dir)
             self._use_mock = True
@@ -140,7 +140,7 @@ class MongoDBHandler:
                 [("hashtags", pymongo.ASCENDING)], name="idx_hashtags")
             self._db["posts"].create_index(
                 [("author_id", pymongo.ASCENDING)], name="idx_author")
-            logger.info("✅ Đã tạo indexes MongoDB")
+            logger.info("Đã tạo indexes MongoDB")
         except Exception as e:
             logger.error("Lỗi tạo index: %s", e)
 
@@ -171,7 +171,7 @@ class MongoDBHandler:
                 saved += 1
             except Exception as e:
                 logger.warning("Lỗi lưu user %s: %s", u.get("username"), e)
-        logger.info("  💾 Đã lưu %d/%d users vào MongoDB", saved, len(user_dicts))
+        logger.info("Đã lưu %d/%d users vào MongoDB", saved, len(user_dicts))
         return saved
 
     def get_user(self, user_id: str) -> Optional[dict]:
@@ -198,7 +198,7 @@ class MongoDBHandler:
             logger.debug("  ↩  Cập nhật post: %s", post_dict["post_id"][:8])
             return post_dict["post_id"]
         col.insert_one(post_dict)
-        logger.debug("  ✚  Lưu post mới: %s", post_dict["post_id"][:8])
+        logger.debug("Lưu post mới: %s", post_dict["post_id"][:8])
         return post_dict["post_id"]
 
     def save_posts_bulk(self, post_dicts: List[dict]) -> int:
@@ -209,7 +209,7 @@ class MongoDBHandler:
                 saved += 1
             except Exception as e:
                 logger.warning("Lỗi lưu post %s: %s", p.get("post_id"), e)
-        logger.info("  💾 Đã lưu %d/%d posts vào MongoDB", saved, len(post_dicts))
+        logger.info("Đã lưu %d/%d posts vào MongoDB", saved, len(post_dicts))
         return saved
 
     def get_posts_by_author(self, author_id: str) -> List[dict]:

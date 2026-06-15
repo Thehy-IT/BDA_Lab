@@ -19,7 +19,7 @@ class MockRedis:
     def __init__(self):
         self._store: Dict[str, any] = {}
         self._ttls:  Dict[str, float] = {}
-        logger.warning("⚠️  Dùng MockRedis (in-memory). "
+        logger.warning("Dùng MockRedis (in-memory). "
                        "Dữ liệu mất khi tắt chương trình.")
 
     # ── String / Counter ────────────────────────────────
@@ -146,10 +146,10 @@ class RedisHandler:
             r = redis.Redis(host=host, port=port, db=db,
                             decode_responses=True, socket_timeout=2)
             r.ping()
-            logger.info("✅ Kết nối Redis thành công: %s:%d", host, port)
+            logger.info("Kết nối Redis thành công: %s:%d", host, port)
             return r
         except Exception as e:
-            logger.warning("⚠️  Không kết nối được Redis (%s). "
+            logger.warning("Không kết nối được Redis (%s). "
                            "Chuyển sang MockRedis.", e)
             return MockRedis()
 
@@ -180,7 +180,7 @@ class RedisHandler:
             stats[uid] = n
         total_users = len(stats)
         total_items = len(feed_items)
-        logger.info("  💾 Đã đẩy %d feed items cho %d users vào Redis",
+        logger.info("Đã đẩy %d feed items cho %d users vào Redis",
                     total_items, total_users)
         return stats
 
@@ -217,7 +217,7 @@ class RedisHandler:
         """Cập nhật trending cho nhiều tags cùng lúc"""
         for tag, score in tag_scores.items():
             self._r.zincrby(self.TRENDING_KEY, score, tag)
-        logger.info("  📈 Cập nhật trending: %d tags", len(tag_scores))
+        logger.info("Cập nhật trending: %d tags", len(tag_scores))
 
     def get_trending_tags(self, top_n: int = 10) -> List[Tuple[str, float]]:
         """Lấy top trending hashtags"""
@@ -241,7 +241,7 @@ class RedisHandler:
         for p in posts:
             key = self.LIKES_PREFIX + p["post_id"]
             self._r.set(key, str(p.get("likes_count", 0)))
-        logger.info("  ❤️  Khởi tạo likes counter cho %d posts", len(posts))
+        logger.info("Khởi tạo likes counter cho %d posts", len(posts))
 
     # ──────────────────────────────────────────────────────
     # ONLINE USERS
