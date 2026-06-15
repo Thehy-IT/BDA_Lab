@@ -29,7 +29,7 @@ docker run -d --name mongodb-bda -p 27017:27017 mongo:latest
 ### 2. Chạy Redis
 
 ```bash
-docker run -d --name redis-bda -p 6379:6379 redis:latest
+docker run -d --name redis-bda -p 6379:6379 -p 8001:8001 redis/redis-stack
 ```
 
 *Giải thích:* Tương tự, lệnh này chạy Redis và mở cổng `6379`.
