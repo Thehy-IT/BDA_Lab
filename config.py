@@ -37,7 +37,7 @@ CRAWL_TIMEOUT      = 10
 CRAWL_BATCH_SIZE   = 50    # số bản ghi xử lý mỗi batch
 
 # ── Mock / Simulation ──────────────────────────────────────
-USE_MOCK_DATA = True       # True = dùng dữ liệu giả lập (không cần DB thật)
+USE_MOCK_DATA = False       # True = dùng dữ liệu giả lập (không cần DB thật)
 MOCK_DATA_DIR = "data/mock_data"
 
 SOCIAL_PLATFORMS = ["twitter", "facebook", "instagram"]
